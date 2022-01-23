@@ -2,10 +2,16 @@ class Tableau1 extends Phaser.Scene{
     preload(){
         this.load.image('cercle',"assets/cercle.png");
         this.load.image('carre',"assets/carre.png");
+        this.load.image('back',"assets/back.png");
+        this.load.image('gauche',"assets/gauche.png");
+        this.load.image('droite',"assets/droite.png");
     }
     create(){
         this.hauteur=500;
         this.largeur=1000;
+
+        this.bg=this.add.sprite(500,250,'back');
+        this.bg.setDisplaySize(1000,500);
 
         this.balle=this.physics.add.sprite(this.largeur/2,this.hauteur/2,'cercle');
         this.balle.setDisplaySize(20,20);
@@ -23,12 +29,12 @@ class Tableau1 extends Phaser.Scene{
         this.bas.body.setAllowGravity(false);
         this.bas.setImmovable(true);
 
-        this.gauche=this.physics.add.sprite(0, (this.hauteur/2)-50,'carre').setOrigin(0,0);
-        this.gauche.setDisplaySize(20, 100);
+        this.gauche=this.physics.add.sprite(0, (this.hauteur/2)-50,'gauche').setOrigin(0,0);
+        this.gauche.setDisplaySize(50, 100);
         this.gauche.setImmovable(true);
 
-        this.droite=this.physics.add.sprite(this.largeur-20, (this.hauteur/2)-50,'carre').setOrigin(0,0);
-        this.droite.setDisplaySize(20, 100);
+        this.droite=this.physics.add.sprite(this.largeur-50, (this.hauteur/2)-50,'droite').setOrigin(0,0);
+        this.droite.setDisplaySize(50, 100);
         this.droite.setImmovable(true);
 
         let me=this;
@@ -42,6 +48,16 @@ class Tableau1 extends Phaser.Scene{
         this.physics.add.collider(this.balle,this.droite, function (){
             me.rebond(me.droite);
         });
+
+        this.physics.add.collider(this.haut, this.gauche);
+        this.physics.add.collider(this.bas, this.gauche);
+
+        this.physics.add.collider(this.haut, this.droite);
+        this.physics.add.collider(this.bas, this.droite);
+
+        this.joueurGauche = new Joueur('Guingamp','joueurGauche')
+        this.joueurDroite = new Joueur('FC Bourdeaux','joueurDroite')
+        console.log(this.joueurGauche)
 
         this.initKeyboard();
     }
@@ -78,6 +94,12 @@ class Tableau1 extends Phaser.Scene{
         this.balle.setVelocityY(this.balle.body.velocity.y + positionRelativeRaquette * hauteurRaquette);
 
     }
+
+    win(joueur){
+        joueur.score ++;
+        this.Initiale();
+    }
+
 
     initKeyboard(){
         let me=this;
@@ -118,20 +140,11 @@ class Tableau1 extends Phaser.Scene{
     }
 
     update(){
-        if(this.balle.x > this.largeur){
-            this.balle.x=this.largeur/2;
-            this.balle.y=this.hauteur/2;
+        if(this.balle.x>this.largeur){
+            this.win(this.joueurGauche);
         }
-        if(this.balle.x < 0){
-            this.balle.x=this.largeur/2;
-            this.balle.y=this.hauteur/2;
+        if(this.balle.x<0){
+            this.win(this.joueurDroite);
         }
-        if(this.balle.y < 0){
-            this.balle.y=0;
-        }
-        if(this.balle.y > this.hauteur){
-            this.balle.y = this.hauteur;
-        }
-
     }
 }

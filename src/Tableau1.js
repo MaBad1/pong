@@ -5,6 +5,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('back',"assets/back.png");
         this.load.image('gauche',"assets/gauche.png");
         this.load.image('droite',"assets/droite.png");
+        this.load.image('flame',"assets/flame.png");
     }
     create(){
         this.hauteur=500;
@@ -58,6 +59,17 @@ class Tableau1 extends Phaser.Scene{
         this.joueurGauche = new Joueur('Guingamp','joueurGauche')
         this.joueurDroite = new Joueur('FC Bourdeaux','joueurDroite')
         console.log(this.joueurGauche)
+
+        this.particles = this.add.particles('flame');
+
+        this.particles.createEmitter({
+            speed: 100,
+            scale: { start: 0.2, end: 0 },
+            blendMode: 'ADD',
+            follow:this.balle,
+            lifespan: { min: 200, max: 300 },
+            quantity: 2,
+        });
 
         this.initKeyboard();
     }

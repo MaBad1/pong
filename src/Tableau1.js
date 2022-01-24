@@ -56,6 +56,7 @@ class Tableau1 extends Phaser.Scene{
         this.physics.add.collider(this.haut, this.droite);
         this.physics.add.collider(this.bas, this.droite);
 
+
         this.joueurGauche = new Joueur('Guingamp','joueurGauche')
         this.joueurDroite = new Joueur('FC Bourdeaux','joueurDroite')
         console.log(this.joueurGauche)
@@ -152,6 +153,15 @@ class Tableau1 extends Phaser.Scene{
     }
 
     update(){
+        if(this.balle.x > this.largeur){
+            this.gauche.setY((this.hauteur/2)-50)
+            this.droite.setY((this.hauteur/2)-50)
+        }
+        if(this.balle.x <0){
+            this.gauche.setY((this.hauteur/2)-50)
+            this.droite.setY((this.hauteur/2)-50)
+        }
+
         if(this.balle.x>this.largeur){
             this.win(this.joueurGauche);
         }

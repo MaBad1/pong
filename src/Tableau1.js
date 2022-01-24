@@ -11,7 +11,7 @@ class Tableau1 extends Phaser.Scene{
         this.largeur=1000;
 
         this.bg=this.add.sprite(500,250,'back');
-        this.bg.setDisplaySize(1000,500);
+        this.bg.setDisplaySize(1100,500);
 
         this.balle=this.physics.add.sprite(this.largeur/2,this.hauteur/2,'cercle');
         this.balle.setDisplaySize(20,20);

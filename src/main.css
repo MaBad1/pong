@@ -1,7 +1,7 @@
 body{
     font-family: Arial, sans-serif;
     font-size: 12px;
-    background-color: #000000;
+    background-color: #1e5c17;
     text-align: center;
 }
 a{
@@ -31,7 +31,7 @@ canvas{
 
 #scores{
     color: #ffffff;
-    font-size : 5vw;
+    font-size : 3vw;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -40,10 +40,10 @@ canvas{
 }
 
 .score{
-    color:#0f0
+    color:#f00
 }
 .name{
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #scores >* {

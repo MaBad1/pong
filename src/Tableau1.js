@@ -70,6 +70,7 @@ class Tableau1 extends Phaser.Scene{
             follow:this.balle,
             lifespan: { min: 200, max: 300 },
             quantity: 2,
+            angle: this.balle.x+40,
         });
 
         this.initKeyboard();

@@ -169,10 +169,10 @@ class Tableau1 extends Phaser.Scene{
                 scale: { start: 0.3, end: 0.5 },
                 blendMode: 'ADD',
                 lifespan: 150,
-                quantity: 2,
+                quantity: 5,
 
             });
-            this.time.delayedCall(750, ()=>{
+            this.time.delayedCall(250, ()=>{
                 this.emitter.stop();
             });
         }
@@ -187,10 +187,10 @@ class Tableau1 extends Phaser.Scene{
                 scale: { start: 0.3, end: 0.5 },
                 blendMode: 'ADD',
                 lifespan: 150,
-                quantity: 2,
+                quantity: 5,
 
             });
-            this.time.delayedCall(750, ()=>{
+            this.time.delayedCall(250, ()=>{
                 this.emitter.stop();
             });
         }

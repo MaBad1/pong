@@ -6,6 +6,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gauche',"assets/gauche.png");
         this.load.image('droite',"assets/droite.png");
         this.load.image('flame',"assets/flame.png");
+        this.load.image('red',"assets/red.png");
+        this.load.image('blue',"assets/blue.png");
     }
     create(){
         this.hauteur=500;
@@ -62,6 +64,8 @@ class Tableau1 extends Phaser.Scene{
         console.log(this.joueurGauche)
 
         this.particles = this.add.particles('flame');
+        this.blueparticles = this.add.particles('blue');
+        this.redparticles = this.add.particles('red');
 
         this.particles.createEmitter({
             speed: 100,
@@ -157,10 +161,38 @@ class Tableau1 extends Phaser.Scene{
         if(this.balle.x > this.largeur){
             this.gauche.setY((this.hauteur/2)-50)
             this.droite.setY((this.hauteur/2)-50)
+
+            this.emitter = this.add.particles('red').createEmitter({
+                x : this.largeur,
+                y : this.balle.y,
+                speed: 500,
+                scale: { start: 0.3, end: 0.5 },
+                blendMode: 'ADD',
+                lifespan: 150,
+                quantity: 2,
+
+            });
+            this.time.delayedCall(750, ()=>{
+                this.emitter.stop();
+            });
         }
         if(this.balle.x <0){
             this.gauche.setY((this.hauteur/2)-50)
             this.droite.setY((this.hauteur/2)-50)
+
+            this.emitter = this.add.particles('blue').createEmitter({
+                x : 0,
+                y : this.balle.y,
+                speed: 500,
+                scale: { start: 0.3, end: 0.5 },
+                blendMode: 'ADD',
+                lifespan: 150,
+                quantity: 2,
+
+            });
+            this.time.delayedCall(750, ()=>{
+                this.emitter.stop();
+            });
         }
 
         if(this.balle.x>this.largeur){

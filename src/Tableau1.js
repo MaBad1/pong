@@ -10,6 +10,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('flame',"assets/flame.png");
         this.load.image('red',"assets/red.png");
         this.load.image('blue',"assets/blue.png");
+        this.load.image('tige',"assets/tige.png");
     }
     create(){
         this.hauteur=500;
@@ -39,6 +40,19 @@ class Tableau1 extends Phaser.Scene{
         this.bas.setDisplaySize(this.largeur,20);
         this.bas.body.setAllowGravity(false);
         this.bas.setImmovable(true);
+
+        //Tiges du baby foot
+        this.tige=this.add.sprite(-25,18,'tige').setOrigin(0,0);
+        this.tige.setDisplaySize(100,465);
+
+        this.tige2=this.add.sprite(275,18,'tige').setOrigin(0,0);
+        this.tige2.setDisplaySize(100,465);
+
+        this.tige3=this.add.sprite(625,18,'tige').setOrigin(0,0);
+        this.tige3.setDisplaySize(100,465);
+
+        this.tige4=this.add.sprite(925,18,'tige').setOrigin(0,0);
+        this.tige4.setDisplaySize(100,465);
 
         //raquettes gauches
 

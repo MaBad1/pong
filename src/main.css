@@ -1,8 +1,11 @@
 body{
     font-family: Arial, sans-serif;
     font-size: 12px;
-    background-color: #1e5c17;
+    background-color: #222d40;
     text-align: center;
+    background-image: url(https://github.com/MaBad1/pong/blob/main/assets/fond.png?raw=true);
+    background-position: 50.3%, 52%;
+    background-repeat: no-repeat;
 }
 a{
     color: #808080;

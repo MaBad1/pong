@@ -11,6 +11,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('red',"assets/red.png");
         this.load.image('blue',"assets/blue.png");
         this.load.image('tige',"assets/tige.png");
+        this.load.image('cageG',"assets/cageG.png");
+        this.load.image('cageD',"assets/cageD.png");
     }
     create(){
         this.hauteur=500;
@@ -81,6 +83,13 @@ class Tableau1 extends Phaser.Scene{
         this.droite3=this.physics.add.sprite(this.largeur-350, this.hauteur-150,'droite').setOrigin(0,0);
         this.droite3.setDisplaySize(50, 100);
         this.droite3.setImmovable(true);
+
+        //cages
+
+        this.cageG=this.add.sprite(0,20,'cageG').setOrigin(0,0);
+        this.cageG.setDisplaySize(30,460);
+        this.cageD=this.add.sprite(this.largeur-30,20,'cageD').setOrigin(0,0);
+        this.cageD.setDisplaySize(30,460);
 
         let me=this;
 
